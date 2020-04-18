@@ -1,0 +1,15 @@
+Note:
+
++ For new buyers: Using install.zip to get new installation or re-install.
+
++ For old buyers: Please go to https://smartpanelsmm.com/docs/smartpanel.php for How to update
+
++ You should backup the current Version before updating to new version.
+
++ Clear Your Browser Cache after updating.
+
+If you are using the very old version for Eg: Ver1.3, Ver2.0, Ver2.4 etc. In case, you should contact via email: tuyennguyen2906@gmail.com for more details
+
+
+
+ 
