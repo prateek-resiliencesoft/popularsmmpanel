@@ -819,16 +819,23 @@ class api_provider extends MX_Controller {
 		switch ($type) {
 			case 'order':
 				/*----------  Get all order through API  ----------*/
+                echo"<pre>";
 				$orders = $this->model->get_all_orders();
+//                print_r($orders);
+//                die();
+
 				if (!empty($orders)) {
 					foreach ($orders as $key => $row) {
 						$api = $this->model->get("url, key", $this->tb_api_providers, ["id" => $row->api_provider_id] );
+//                        print_r($api);
 						if (!empty($api)) {
 							$data_post = array(
 								'key' 	   => $api->key,
 					            'action'   => 'add',
 					            'service'  => $row->api_service_id,
 							);
+//                            print_r($data_post);
+//                            echo $row->service_type;
 							switch ($row->service_type) {
 								case 'subscriptions':
 									$data_post["username"] = $row->username;
@@ -901,9 +908,12 @@ class api_provider extends MX_Controller {
 									}
 									break;
 							}
-							if(!get_option('get_features_option')) break;
+				// 			if(!get_option('get_features_option')) break;
+//                            print_r($data_post);
 							$response = $this->connect_api($api->url, $data_post);
 							$response = json_decode($response);
+//                            print_r($response);
+//                            die();
 							if (isset($response->error) && $response->error != "") {
 								echo $response->error."<br>";
 								$data = array(

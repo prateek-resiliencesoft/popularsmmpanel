@@ -908,7 +908,7 @@ class api_provider extends MX_Controller {
 									}
 									break;
 							}
-							if(!get_option('get_features_option')) break;
+//							if(!get_option('get_features_option')) break;
 //                            print_r($data_post);
 							$response = $this->connect_api($api->url, $data_post);
 							$response = json_decode($response);
@@ -1016,6 +1016,9 @@ class api_provider extends MX_Controller {
 			case 'status':
 				/*----------  Get all order through API  ----------*/
 				$orders = $this->model->get_all_orders_status();
+//                echo "<pre>";
+//                print_r($orders);
+//                die();
 				$default_price_percentage_increase = get_option("default_price_percentage_increase", 30);
 
 				// Convert to new currency or not
@@ -1026,7 +1029,9 @@ class api_provider extends MX_Controller {
 				
 				if (!empty($orders)) {
 					foreach ($orders as $key => $row) {
-						$api = $this->model->get("url, key", $this->tb_api_providers, ["id" => $row->api_provider_id] );
+					 $api = $this->model->get("url, key", $this->tb_api_providers, ["id" => $row->api_provider_id] );
+//                        print_r($api);
+//                        die();
 						if (!empty($api)) {
 							$data_post = array(
 								'key' 	   => $api->key,
@@ -1035,7 +1040,8 @@ class api_provider extends MX_Controller {
 							);
 							$response = $this->connect_api($api->url, $data_post);
 							$response = json_decode($response);
-							if(!get_option('get_features_option')) break;
+//                            print_r($response)
+//							if(!get_option('get_features_option')) break;
 							if (isset($response->error) && $response->error != "") {
 								echo $response->error."<br>";
 								$data = array(
@@ -1068,7 +1074,8 @@ class api_provider extends MX_Controller {
 										    "changed"             => date('Y-m-d H:i:s', strtotime(NOW) + $rand_time),
 										    "status"              => $status_dripfeed,
 										);
-
+//                                        print_r($response);
+//                                        die();
 										if (isset($response->runs)) {
 											$data['sub_response_orders'] = json_encode($response);
 										}else{

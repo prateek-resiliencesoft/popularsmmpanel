@@ -26,7 +26,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-6">
                   <div class="form-group">
                     <label ><?=lang("api_orderid")?></label>
-                    <input type="text" class="form-control square"  disabled value="<?=(!empty($order->api_order_id) && $order->api_order_id > 0)? $order->api_order_id: ''?>">
+                    <input type="text" class="form-control square"   value="<?=(!empty($order->api_order_id) && $order->api_order_id > 0)? $order->api_order_id: ''?>">
                   </div>
                 </div>
 
